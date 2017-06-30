@@ -4,25 +4,28 @@ console.log("Hi");
 
 //Initial DOM Elements
 
-let inputField = document.getElementId("inputField");
-let createButton = document.getElementId("create");
+let inputField = document.getElementById("inputField");
+let createButton = document.getElementById("create");
 
 
 
-createButton.addEventListener("click", function(){
-	 createCard(inputField.value);
+createButton.addEventListener("click", function() {
+    createCard(inputField.value);
 });
 
 
-function createCard(userInput)  {
-	let cardDiv = document.createElement("div");
-	// let deleteButton = document.createElement("button");
-	// deleteButton.innerHTML = "Delete!";
+function createCard(userInput) {
+    let output = document.getElementById("output");
+    // let deleteButton = document.createElement("button");
+    // deleteButton.innerHTML = "Delete!";
 
-	cardDiv.innerHTML = `<p>${userInput}</p><button class='delete'>Delete!</button>`;
-	output.appendChild(cardDiv);
+    output.innerHTML += `<p>${userInput}<button class='delete'>Delete!</button></p>`;
+    let emptyArray = document.getElementsByClassName("delete");
+    for (let i = 0; i < emptyArray.length; i++) {
+        emptyArray[i].addEventListener("click", function() {
+            event.target.parentNode.remove()
+        })
+    }
+
 
 }
-
-
-
